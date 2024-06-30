@@ -1,0 +1,16 @@
+# Ignore all files in the dEN5-tech.github.io-prjct directory
+dEN5-tech.github.io-prjct/
+
+# Ignore specific file types in the dEN5-tech.github.io-prjct directory
+dEN5-tech.github.io-prjct/*.log
+dEN5-tech.github.io-prjct/*.tmp
+dEN5-tech.github.io-prjct/*.bak
+
+# Ignore node_modules directory within the dEN5-tech.github.io-prjct directory
+dEN5-tech.github.io-prjct/node_modules/
+
+# Ignore build output directories within the dEN5-tech.github.io-prjct directory
+dEN5-tech.github.io-prjct/dist/
+dEN5-tech.github.io-prjct/build/
+
+
