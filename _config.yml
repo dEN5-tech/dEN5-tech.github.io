@@ -1,3 +1,36 @@
+# Theme and basic info
 theme: jekyll-theme-minimal
-title: Octocat's homepage
+title: dEN5-tech's Project Site
 description: Bookmark this to keep an eye on my project updates!
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+# Include specific files
+include:
+  - index.html
+  - RSE.html
+
+# Site URL configuration
+baseurl: ""
+url: "https://den5-tech.github.io"
+
+# Default layout settings
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+
+# GitHub Pages specific settings
+lsi: false
+safe: true
+incremental: false
+highlighter: rouge
+gist:
+  noscript: false
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
