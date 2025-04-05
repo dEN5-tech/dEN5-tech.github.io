@@ -1,1 +1,215 @@
-<!doctype html><html><head><title>Rsbuild App</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script defer="defer" src="/resource/js/index.42b0222a.js"></script><link href="/resource/css/index.02d157ca.css" rel="stylesheet"></head><body><div id="root"></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denis Kartashov - Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neural: {
+                            dark: '#0D1117',
+                            card: 'rgba(13, 22, 38, 0.7)',
+                            accent: '#58a6ff',
+                            glow: '#58a6ff',
+                            text: '#c9d1d9',
+                            muted: '#8b949e'
+                        }
+                    },
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'monospace'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        
+        .glassmorphism {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        
+        .neural-bg {
+            background: radial-gradient(circle at 50% 50%, #1a2233, #0D1117);
+            background-size: 200% 200%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glow {
+            filter: drop-shadow(0 0 10px rgba(88, 166, 255, 0.4));
+        }
+        
+        .grid-pattern {
+            background-image: radial-gradient(rgba(88, 166, 255, 0.15) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+    </style>
+</head>
+<body class="neural-bg text-neural-text min-h-screen overflow-x-hidden font-sans" x-data="{ activeSection: 'about' }">
+    <div class="grid-pattern fixed inset-0 z-0 opacity-30"></div>
+    
+    <header class="fixed top-0 left-0 right-0 z-10">
+        <nav class="glassmorphism mx-auto my-4 max-w-5xl rounded-lg p-4 flex items-center justify-between">
+            <div class="font-mono text-xl font-bold text-neural-accent glow">
+                <span>&lt;Denis.Kartashov /&gt;</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <button @click="activeSection = 'about'" :class="activeSection === 'about' ? 'text-neural-accent' : 'text-neural-muted hover:text-neural-text'" class="transition duration-300">About</button>
+                <button @click="activeSection = 'skills'" :class="activeSection === 'skills' ? 'text-neural-accent' : 'text-neural-muted hover:text-neural-text'" class="transition duration-300">Skills</button>
+                <button @click="activeSection = 'projects'" :class="activeSection === 'projects' ? 'text-neural-accent' : 'text-neural-muted hover:text-neural-text'" class="transition duration-300">Projects</button>
+                <button @click="activeSection = 'contact'" :class="activeSection === 'contact' ? 'text-neural-accent' : 'text-neural-muted hover:text-neural-text'" class="transition duration-300">Contact</button>
+            </div>
+            <button class="md:hidden text-neural-accent">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main class="pt-32 pb-20 px-4 max-w-5xl mx-auto relative z-1">
+        <div x-show="activeSection === 'about'" x-transition class="space-y-8">
+            <div class="glassmorphism rounded-xl p-8 mb-8">
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="w-40 h-40 rounded-full overflow-hidden border-2 border-neural-accent glow">
+                        <img src="https://avatars.githubusercontent.com/u/den5-tech" alt="Denis Kartashov" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Denis+Kartashov&background=58a6ff&color=fff'">
+                    </div>
+                    <div>
+                        <h1 class="text-4xl font-bold mb-2">Denis Kartashov</h1>
+                        <p class="text-xl text-neural-muted mb-4">Full-stack Developer</p>
+                        <p class="mb-4">Currently working with Node.js, React.js, Redux Toolkit, Tauri, Electron, Python and NestJS. Passionate about learning new technologies and applying them to interesting projects.</p>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/den5-tech" class="text-neural-accent hover:text-white transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            </a>
+                            <a href="https://t.me/den5_tech" class="text-neural-accent hover:text-white transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.218 19l-.646-5.278h-.02l-3.349-4.42 8.223-3.911-4.208 13.609z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glassmorphism rounded-xl p-8">
+                <h2 class="text-2xl font-bold mb-6 text-neural-accent">About Me</h2>
+                <p class="mb-4">👋 Hi! I'm Denis, a full-stack developer passionate about creating amazing applications.</p>
+                <ul class="space-y-2 mb-4">
+                    <li class="flex items-start">
+                        <span class="text-neural-accent mr-2">🔭</span> 
+                        <span>Currently working with Node.js, React.js, Redux Toolkit, Tauri, Electron, Python and NestJS</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-neural-accent mr-2">🌱</span> 
+                        <span>Learning new technologies and tools in my field</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-neural-accent mr-2">👯</span> 
+                        <span>Looking to collaborate with other developers on interesting projects</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-neural-accent mr-2">🤔</span> 
+                        <span>Seeking help with solving complex tasks and sharing experience with skilled developers</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-neural-accent mr-2">⚡</span> 
+                        <span>Fun fact: I love exploring new technologies and implementing them in my projects</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div x-show="activeSection === 'skills'" x-transition class="glassmorphism rounded-xl p-8">
+            <h2 class="text-2xl font-bold mb-6 text-neural-accent">Skills & Technologies</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Frontend</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">React.js</span>
+                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">Redux Toolkit</span>
+                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">Tauri</span>
+                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">Electron</span>
+                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">HTML/CSS</span>
+                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">JavaScript</span>
+                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">TypeScript</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Backend</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">Node.js</span>
+                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">NestJS</span>
+                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">Python</span>
+                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">Express</span>
+                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">REST API</span>
+                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">SQL/NoSQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="activeSection === 'projects'" x-transition class="glassmorphism rounded-xl p-8">
+            <h2 class="text-2xl font-bold mb-6 text-neural-accent">Projects</h2>
+            <p class="mb-6">Check out my GitHub for project repositories.</p>
+            <a href="https://github.com/den5-tech" class="inline-block px-6 py-3 bg-neural-accent text-white rounded-lg font-medium hover:bg-opacity-80 transition">Visit GitHub Profile</a>
+        </div>
+
+        <div x-show="activeSection === 'contact'" x-transition class="glassmorphism rounded-xl p-8">
+            <h2 class="text-2xl font-bold mb-6 text-neural-accent">Contact Me</h2>
+            <p class="mb-6">Feel free to reach out to me on Telegram:</p>
+            <a href="https://t.me/den5_tech" class="inline-flex items-center px-6 py-3 bg-neural-accent text-white rounded-lg font-medium hover:bg-opacity-80 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.218 19l-.646-5.278h-.02l-3.349-4.42 8.223-3.911-4.208 13.609z"/></svg>
+                Telegram
+            </a>
+        </div>
+    </main>
+
+    <footer class="border-t border-neural-accent/20 py-8 text-center text-neural-muted">
+        <div class="max-w-5xl mx-auto px-4">
+            <p>&copy; 2023 Denis Kartashov. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.from('header', { y: -100, opacity: 0, duration: 1, ease: 'power3.out' });
+            gsap.from('main > div', { y: 50, opacity: 0, duration: 1, delay: 0.5, ease: 'power3.out' });
+            
+            // Animate background elements
+            gsap.to('.neural-bg', { 
+                backgroundPosition: '100% 100%', 
+                duration: 15, 
+                repeat: -1, 
+                yoyo: true, 
+                ease: 'none' 
+            });
+            
+            // Mouse tracking glow effect
+            document.addEventListener('mousemove', (e) => {
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                
+                gsap.to('.grid-pattern', {
+                    backgroundPosition: `${x * 20}px ${y * 20}px`,
+                    duration: 1
+                });
+            });
+        });
+    </script>
+</body>
+</html>
