@@ -10,7 +10,7 @@ permalink: pretty
 # Include specific files
 include:
   - index.html
-  - RSE.html
+  - resource/RSE.html
 
 # Site URL configuration
 baseurl: ""
