@@ -1,36 +1,50 @@
-# Theme and basic info
+# Basic site info
 theme: jekyll-theme-minimal
 title: dEN5-tech's Project Site
 description: Bookmark this to keep an eye on my project updates!
 
-# Build settings
-markdown: kramdown
-permalink: pretty
-
-# Include specific files
-include:
-  - index.html
-  - resource/RSE.html
-
-# Site URL configuration
+# Site URLs
 baseurl: ""
 url: "https://den5-tech.github.io"
 
-# Default layout settings
+# Directory configurations
+include:
+  - resource
+  - resource/RSE.html
+
+# Default layouts
 defaults:
   - scope:
       path: ""
       type: "pages"
     values:
       layout: default
+  - scope:
+      path: "resource"
+    values:
+      layout: default
+  - scope:
+      path: "resource/RSE.html"
+    values:
+      layout: default
+      permalink: /resource/RSE.html
 
-# GitHub Pages specific settings
-lsi: false
+# Basic build settings
+markdown: kramdown
+encoding: UTF-8
 safe: true
-incremental: false
-highlighter: rouge
-gist:
-  noscript: false
-kramdown:
-  math_engine: mathjax
-  syntax_highlighter: rouge
+
+# Essential plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Site metadata
+lang: en
+author: dEN5-tech
+
+# GitHub metadata
+github:
+  repository_url: https://github.com/dEN5-tech/dEN5-tech.github.io
+  is_project_page: true
+  owner_url: https://github.com/dEN5-tech
