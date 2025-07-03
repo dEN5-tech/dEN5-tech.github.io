@@ -1,221 +1,261 @@
----
-layout: default
-title: Home
-permalink: /
----
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Denis Kartashov - Developer</title>
+    <title>Денис Карташов | Full-Stack JavaScript Разработчик</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        neural: {
-                            dark: '#0D1117',
-                            card: 'rgba(13, 22, 38, 0.7)',
-                            accent: '#58a6ff',
-                            glow: '#58a6ff',
-                            text: '#c9d1d9',
-                            muted: '#8b949e'
-                        }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        html { scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; /* slate-900 */ }
+        ::-webkit-scrollbar-thumb { background: #334155; /* slate-700 */ }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; /* slate-600 */ }
+
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+
+        @layer base {
+            :root {
+                --primary: #f59e0b;
+                --primary-dark: #d97706;
+                --primary-light: #fef3c7;
+                --background: #f8fafc;
+                --background-dark: #0f172a;
+                --text: #1e293b;
+                --text-dark: #f1f5f9;
+                --border: #e2e8f0;
+                --border-dark: #334155;
+            }
+        }
+
+        @layer components {
+            .skill-card-primary {
+                @apply font-mono text-sm text-center p-4 rounded-lg transition-all duration-300 cursor-pointer flex flex-col items-center justify-center bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-amber-100 dark:hover:bg-amber-900/30 hover:text-amber-700 dark:hover:text-amber-300 hover:shadow-xl hover:-translate-y-1.5 shadow-md dark:shadow-slate-900/50 border border-slate-200 dark:border-slate-700 hover:border-amber-300 dark:hover:border-amber-700;
+            }
+            .skill-card-secondary {
+                @apply font-mono text-sm text-center p-4 rounded-lg transition-all duration-300 cursor-pointer flex flex-col items-center justify-center bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-amber-700 dark:hover:text-amber-300 border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600;
+            }
+        }
+    </style>
+
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'], },
+                colors: { 
+                    amber: {
+                        50: '#fffbeb',
+                        100: '#fef3c7',
+                        200: '#fde68a',
+                        300: '#fcd34d',
+                        400: '#fbbf24',
+                        500: '#f59e0b',
+                        600: '#d97706',
+                        700: '#b45309',
+                        800: '#92400e',
+                        900: '#78350f',
                     },
-                    fontFamily: {
-                        mono: ['JetBrains Mono', 'monospace'],
-                        sans: ['Inter', 'sans-serif']
+                    slate: {
+                        50: '#f8fafc',
+                        100: '#f1f5f9',
+                        200: '#e2e8f0',
+                        300: '#d1d5db',
+                        400: '#94a3b8',
+                        500: '#64748b',
+                        600: '#475569',
+                        700: '#334155',
+                        800: '#1e293b',
+                        900: '#0f172a',
                     }
                 }
             }
-        }
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-        
-        .glassmorphism {
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-        
-        .neural-bg {
-            background: radial-gradient(circle at 50% 50%, #1a2233, #0D1117);
-            background-size: 200% 200%;
-            animation: gradientAnimation 15s ease infinite;
-        }
-        
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .glow {
-            filter: drop-shadow(0 0 10px rgba(88, 166, 255, 0.4));
-        }
-        
-        .grid-pattern {
-            background-image: radial-gradient(rgba(88, 166, 255, 0.15) 1px, transparent 1px);
-            background-size: 30px 30px;
-        }
-    </style>
+        },
+        plugins: []
+    }
+</script>
 </head>
-<body class="neural-bg text-neural-text min-h-screen overflow-x-hidden font-sans" x-data="{ activeSection: 'about' }">
-    <div class="grid-pattern fixed inset-0 z-0 opacity-30"></div>
+
+<body class="bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 antialiased transition-colors duration-300">
+
+    <div x-data="{ isDark: localStorage.getItem('isDark') === 'true' }" x-init="$watch('isDark', val => localStorage.setItem('isDark', val))" :class="{ 'dark': isDark }">
     
-    <header class="fixed top-0 left-0 right-0 z-10">
-        <nav class="glassmorphism mx-auto my-4 max-w-5xl rounded-lg p-4 flex items-center justify-between">
-            <div class="font-mono text-xl font-bold text-neural-accent glow">
-                <span>&lt;Denis.Kartashov /&gt;</span>
+    <!-- HEADER -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-100/80 dark:bg-slate-900/80 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-bold text-lg tracking-wider text-slate-900 dark:text-white">ДЕHИС КАРТАШОВ</a>
+            <div class="flex items-center space-x-6">
+                <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600 dark:text-slate-400">
+                    <a href="#about" class="hover:text-amber-500 dark:hover:text-amber-400 transition-colors">Обо мне</a>
+                    <a href="#skills" class="hover:text-amber-500 dark:hover:text-amber-400 transition-colors">Стек</a>
+                    <a href="#contact" class="hover:text-amber-500 dark:hover:text-amber-400 transition-colors">Контакт</a>
+                </nav>
+                <button @click="isDark = !isDark" aria-label="Toggle theme" class="p-2 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    <svg x-show="!isDark" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                    <svg x-show="isDark" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                </button>
             </div>
-            <div class="hidden md:flex space-x-6">
-                <button @click="activeSection = 'about'" :class="activeSection === 'about' ? 'text-neural-accent' : 'text-neural-muted hover:text-neural-text'" class="transition duration-300">About</button>
-                <button @click="activeSection = 'skills'" :class="activeSection === 'skills' ? 'text-neural-accent' : 'text-neural-muted hover:text-neural-text'" class="transition duration-300">Skills</button>
-                <button @click="activeSection = 'projects'" :class="activeSection === 'projects' ? 'text-neural-accent' : 'text-neural-muted hover:text-neural-text'" class="transition duration-300">Projects</button>
-                <button @click="activeSection = 'contact'" :class="activeSection === 'contact' ? 'text-neural-accent' : 'text-neural-muted hover:text-neural-text'" class="transition duration-300">Contact</button>
-            </div>
-            <button class="md:hidden text-neural-accent">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
-        </nav>
+        </div>
     </header>
 
-    <main class="pt-32 pb-20 px-4 max-w-5xl mx-auto relative z-1">
-        <div x-show="activeSection === 'about'" x-transition class="space-y-8">
-            <div class="glassmorphism rounded-xl p-8 mb-8">
-                <div class="flex flex-col md:flex-row gap-8 items-center">
-                    <div class="w-40 h-40 rounded-full overflow-hidden border-2 border-neural-accent glow">
-                        <img src="https://avatars.githubusercontent.com/u/54153548?v=4" alt="Denis Kartashov" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Denis+Kartashov&background=58a6ff&color=fff'">
+    <main class="container mx-auto px-6 pt-24">
+        <!-- HERO SECTION -->
+        <section class="min-h-[calc(100vh-6rem)] grid md:grid-cols-2 items-center gap-10 md:gap-8">
+            <div class="space-y-5 text-left">
+                <p class="hero-reveal font-mono text-amber-500 dark:text-amber-400 text-base md:text-lg">Привет, меня зовут</p>
+                <h1 class="hero-reveal text-4xl sm:text-5xl md:text-7xl font-black text-slate-900 dark:text-slate-100 tracking-tighter">Денис Карташов.</h1>
+                <h2 class="hero-reveal text-3xl sm:text-4xl md:text-6xl font-black text-slate-500 dark:text-slate-400 tracking-tighter">Я — Full-Stack JavaScript разработчик.</h2>
+                <p class="hero-reveal max-w-2xl text-base md:text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+                    Я — программист-стажер из Иваново, увлеченный современными технологиями. Активно развиваюсь в стеке React, Node.js и NestJS, постоянно ищу новые знания и готов к участию в амбициозных проектах.
+                </p>
+                <div class="hero-reveal pt-6">
+                    <a href="#contact" class="group inline-flex items-center justify-center px-8 py-3 font-bold text-amber-900 bg-amber-400 rounded-md hover:bg-amber-500 transition-all duration-300 ease-in-out transform hover:scale-105 text-base">
+                        Связаться со мной
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform duration-300 ease-in-out group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <!-- IMAGE PLACEHOLDER -->
+            <div class="hero-reveal hidden md:flex justify-center items-center">
+                <div class="relative w-full max-w-sm">
+                    <div class="absolute inset-0 bg-slate-200/70 dark:bg-slate-800/70 rounded-3xl transform -rotate-6 transition-transform duration-500 hover:rotate-0"></div>
+                    <div class="relative w-full h-auto bg-slate-300 dark:bg-slate-700 rounded-3xl p-4 shadow-xl border border-slate-300/50 dark:border-slate-700/50 flex justify-center items-center aspect-square">
+                        <!-- Замените этот SVG на ваш тэг <img src="..."> с фотографией -->
+                        <img src="https://avatars.githubusercontent.com/u/54153548?v=4" alt="Profile Avatar" class="w-full h-full object-cover rounded-3xl">
                     </div>
-                    <div>
-                        <h1 class="text-4xl font-bold mb-2">Denis Kartashov</h1>
-                        <p class="text-xl text-neural-muted mb-4">Full-stack Developer</p>
-                        <p class="mb-4">Currently working with Node.js, React.js, Redux Toolkit, Tauri, Electron, Python and NestJS. Passionate about learning new technologies and applying them to interesting projects.</p>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/den5-tech" class="text-neural-accent hover:text-white transition">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
-                            <a href="https://t.me/den5_tech" class="text-neural-accent hover:text-white transition">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.218 19l-.646-5.278h-.02l-3.349-4.42 8.223-3.911-4.208 13.609z"/></svg>
-                            </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="py-24 md:py-32">
+            <h3 class="section-title text-3xl font-bold mb-12 flex items-center text-slate-800 dark:text-slate-200">
+                <span class="font-mono text-2xl text-amber-500 dark:text-amber-400 mr-4">01.</span>
+                Обо мне
+            </h3>
+            <div class="grid md:grid-cols-2 gap-x-16 gap-y-10 items-start">
+                <div class="space-y-4 text-base md:text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+                    <p class="section-content">Я верю, что ключ к созданию выдающихся продуктов — это непрерывное развитие и страсть к своему делу.</p>
+                    <p class="section-content">Для меня разработка — это не просто написание кода, а решение реальных задач и создание полезного пользовательского опыта. Я всегда открыт к новым идеям и готов погружаться в сложные технические вызовы.</p>
+                    <p class="section-content font-medium text-slate-700 dark:text-slate-300">
+                        И да, небольшой забавный факт: я родился 
+                        <span x-data="{ showTooltip: false }" class="relative inline-block">
+                            <span @mouseenter="showTooltip = true" @mouseleave="showTooltip = false" class="text-amber-600 dark:text-amber-400 font-bold cursor-pointer underline decoration-dotted decoration-amber-600/50">29 февраля</span>.
+                            <div x-show="showTooltip" x-transition class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max px-3 py-1.5 bg-slate-800 dark:bg-slate-700 text-white text-sm rounded-md shadow-lg">
+                                Это значит, мой день рождения бывает раз в 4 года!
+                                <div class="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-slate-800 dark:border-t-slate-700"></div>
+                            </div>
+                        </span>
+                    </p>
+                </div>
+                <div class="space-y-6 text-base leading-relaxed">
+                    <div class="section-content flex items-start space-x-4"><span class="text-3xl mt-1">🔭</span><p><b>В фокусе сейчас:</b> Активно разрабатываю на Node.js, React, Redux Toolkit, NestJS, а также экспериментирую с десктопными приложениями на Tauri и Electron.</p></div>
+                    <div class="section-content flex items-start space-x-4"><span class="text-3xl mt-1">🌱</span><p><b>Постоянное обучение:</b> Стремлюсь изучать что-то новое каждый день, чтобы оперативно внедрять лучшие практики и последние тенденции в мире разработки.</p></div>
+                    <div class="section-content flex items-start space-x-4"><span class="text-3xl mt-1">👯</span><p><b>Открыт к сотрудничеству:</b> Ищу возможность работать над увлекательными проектами с другими разработчиками, обмениваться опытом и расти вместе.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="py-24 md:py-32" x-data="skillsData()" x-init="initAnimations()">
+            <div class="text-center">
+                <h3 class="section-title text-3xl font-bold mb-16 text-slate-800 dark:text-slate-200">
+                    <span class="font-mono text-2xl text-amber-500 dark:text-amber-400">02.</span>
+                    Технологический стек
+                </h3>
+            </div>
+            <div class="mb-20">
+                <h4 class="text-xl font-bold text-center text-slate-600 dark:text-slate-400 mb-10 tracking-wider uppercase">Основной стек</h4>
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 max-w-5xl mx-auto">
+                    <template x-for="skill in primarySkills" :key="skill.name">
+                        <div class="skill-card skill-card-primary">
+                            <i class="devicon devicon-2xl" :class="skill.icon"></i>
+                            <span x-text="skill.name"></span>
                         </div>
-                    </div>
+                    </template>
                 </div>
             </div>
-
-            <div class="glassmorphism rounded-xl p-8">
-                <h2 class="text-2xl font-bold mb-6 text-neural-accent">About Me</h2>
-                <p class="mb-4">👋 Hi! I'm Denis, a full-stack developer passionate about creating amazing applications.</p>
-                <ul class="space-y-2 mb-4">
-                    <li class="flex items-start">
-                        <span class="text-neural-accent mr-2">🔭</span> 
-                        <span>Currently working with Node.js, React.js, Redux Toolkit, Tauri, Electron, Python and NestJS</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-neural-accent mr-2">🌱</span> 
-                        <span>Learning new technologies and tools in my field</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-neural-accent mr-2">👯</span> 
-                        <span>Looking to collaborate with other developers on interesting projects</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-neural-accent mr-2">🤔</span> 
-                        <span>Seeking help with solving complex tasks and sharing experience with skilled developers</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-neural-accent mr-2">⚡</span> 
-                        <span>Fun fact: I love exploring new technologies and implementing them in my projects</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div x-show="activeSection === 'skills'" x-transition class="glassmorphism rounded-xl p-8">
-            <h2 class="text-2xl font-bold mb-6 text-neural-accent">Skills & Technologies</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Frontend</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">React.js</span>
-                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">Redux Toolkit</span>
-                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">Tauri</span>
-                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">Electron</span>
-                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">HTML/CSS</span>
-                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">JavaScript</span>
-                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">TypeScript</span>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Backend</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">Node.js</span>
-                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">NestJS</span>
-                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">Python</span>
-                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">Express</span>
-                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">REST API</span>
-                        <span class="px-3 py-1 rounded-full text-sm bg-neural-card border border-neural-accent/30">SQL/NoSQL</span>
-                    </div>
+            <div>
+                <h4 class="text-xl font-bold text-center text-slate-600 dark:text-slate-400 mb-10 tracking-wider uppercase">Также знаком с</h4>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-4xl mx-auto">
+                    <template x-for="skill in secondarySkills" :key="skill">
+                        <div class="skill-card skill-card-secondary" x-text="skill"></div>
+                    </template>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div x-show="activeSection === 'projects'" x-transition class="glassmorphism rounded-xl p-8">
-            <h2 class="text-2xl font-bold mb-6 text-neural-accent">Projects</h2>
-            <p class="mb-6">Check out my GitHub for project repositories.</p>
-            <a href="https://github.com/den5-tech" class="inline-block px-6 py-3 bg-neural-accent text-white rounded-lg font-medium hover:bg-opacity-80 transition">Visit GitHub Profile</a>
-        </div>
-
-        <div x-show="activeSection === 'contact'" x-transition class="glassmorphism rounded-xl p-8">
-            <h2 class="text-2xl font-bold mb-6 text-neural-accent">Contact Me</h2>
-            <p class="mb-6">Feel free to reach out to me on Telegram:</p>
-            <a href="https://t.me/den5_tech" class="inline-flex items-center px-6 py-3 bg-neural-accent text-white rounded-lg font-medium hover:bg-opacity-80 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.218 19l-.646-5.278h-.02l-3.349-4.42 8.223-3.911-4.208 13.609z"/></svg>
-                Telegram
-            </a>
-        </div>
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="py-24 md:py-32 text-center max-w-2xl mx-auto">
+            <h3 class="font-mono text-base md:text-lg text-amber-500 dark:text-amber-400 mb-4">03. Что дальше?</h3>
+            <h4 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-slate-100 mb-5 tracking-tight">Давайте работать вместе</h4>
+            <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-400 mb-10">Я активно ищу возможности для удаленной работы (частичная занятость), где смогу применить свои навыки, внести вклад в интересный проект и продолжить профессиональный рост под руководством опытных коллег.</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <div x-data="{ text: 'moyadres_1@mail.ru' }" class="relative"><button @click="navigator.clipboard.writeText('moyadres_1@mail.ru'); text = 'Скопировано!'; setTimeout(() => text = 'moyadres_1@mail.ru', 2000)" class="w-full sm:w-auto font-mono px-6 py-3 border-2 border-amber-500 text-amber-500 dark:border-amber-400 dark:text-amber-400 rounded-md hover:bg-amber-400/10 transition-all duration-300 text-base" x-text="text"></button></div>
+                <a href="https://github.com/dEN5-tech" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-3 font-bold text-slate-100 bg-slate-800 dark:bg-slate-200 dark:text-slate-900 rounded-md hover:bg-slate-900 dark:hover:bg-white transition-all duration-300 text-base">Профиль GitHub</a>
+            </div>
+        </section>
     </main>
 
-    <footer class="border-t border-neural-accent/20 py-8 text-center text-neural-muted">
-        <div class="max-w-5xl mx-auto px-4">
-            <p>&copy; 2023 Denis Kartashov. All rights reserved.</p>
-        </div>
-    </footer>
+    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            gsap.from('header', { y: -100, opacity: 0, duration: 1, ease: 'power3.out' });
-            gsap.from('main > div', { y: 50, opacity: 0, duration: 1, delay: 0.5, ease: 'power3.out' });
-            
-            // Animate background elements
-            gsap.to('.neural-bg', { 
-                backgroundPosition: '100% 100%', 
-                duration: 15, 
-                repeat: -1, 
-                yoyo: true, 
-                ease: 'none' 
-            });
-            
-            // Mouse tracking glow effect
-            document.addEventListener('mousemove', (e) => {
-                const x = e.clientX / window.innerWidth;
-                const y = e.clientY / window.innerHeight;
-                
-                gsap.to('.grid-pattern', {
-                    backgroundPosition: `${x * 20}px ${y * 20}px`,
-                    duration: 1
+<script>
+    function skillsData() {
+        return {
+            primarySkills: [
+                { name: 'Node.js', icon: 'devicon-nodejs-plain' },
+                { name: 'React', icon: 'devicon-react-original' },
+                { name: 'Redux', icon: 'devicon-redux-original' },
+                { name: 'NestJS', icon: 'devicon-nestjs-plain' },
+                { name: 'Python', icon: 'devicon-python-plain' },
+                { name: 'Electron', icon: 'devicon-electron-original' },
+                { name: 'Tauri', icon: 'devicon-rust-plain' },
+                { name: 'JavaScript', icon: 'devicon-javascript-plain' },
+                { name: 'HTML5', icon: 'devicon-html5-plain' },
+                { name: 'CSS3', icon: 'devicon-css3-plain' },
+            ],
+            secondarySkills: ['REST API', 'PHP', 'MySQL', 'MS SQL Server', 'Git & GitHub'],
+            initAnimations() {
+                gsap.registerPlugin(ScrollTrigger);
+                gsap.from(".hero-reveal", { delay: 0.2, duration: 0.8, y: 40, opacity: 0, stagger: 0.2, ease: "power3.out" });
+                document.querySelectorAll('.section-title').forEach(title => {
+                    gsap.from(title, { scrollTrigger: { trigger: title, start: "top 85%", toggleActions: "play none none none" }, duration: 1, x: -50, opacity: 0, ease: "power3.out", });
                 });
-            });
-        });
-    </script>
+                document.querySelectorAll('.section-content').forEach(content => {
+                    gsap.from(content, { scrollTrigger: { trigger: content, start: "top 90%", toggleActions: "play none none none" }, duration: 1, y: 30, opacity: 0, stagger: 0.15, ease: "power3.out", });
+                });
+                this.$nextTick(() => {
+                    const allSkillCards = this.$el.querySelectorAll('.skill-card');
+                    gsap.from(allSkillCards, {
+                        scrollTrigger: { trigger: "#skills", start: "top 70%", toggleActions: "play none none none" },
+                        duration: 0.5, scale: 0.9, opacity: 0, stagger: 0.05, ease: "back.out(1.7)"
+                    });
+                });
+            }
+        }
+    }
+
+document.addEventListener('DOMContentLoaded', () => {
+    // GSAP animations that are not dependent on Alpine.js can stay here or be moved.
+    // For simplicity, we'll move all animation init logic into Alpine's x-init.
+});
+</script>
+
 </body>
 </html>
